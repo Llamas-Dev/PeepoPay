@@ -1,0 +1,54 @@
+{%extends 'WebPayments/base.html'%}
+{%block contenido%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <link rel="shortcut icon" type="image/x-icon" href="{%static 'WebPayments/img/image.png'%}">
+    <link rel="stylesheet" href="{%static 'WebPayments/css/materialize.css'%}">
+    <title>Listar Suscripciones</title>
+<body>
+    <p></p>
+<h1 class="container center"> Suscripciones </h1>
+<p></p>
+
+<table class="table container highlight">
+        <tr>
+            <th>Nombre</th>
+            <th>Ciclo</th>
+            <th>Duracion</th>
+            <th>Categoria</th>
+            <th>Recordatorio</th>
+            <th>Telefono</th>
+            <th>Monto</th>
+        </tr>
+        {% for row in table %}
+            <tr>
+                
+                <td>{{row.nombre}}</td>
+                <td>{{row.ciclo}}</td>
+                <td>{{row.duracion}}</td>
+                <td>{{row.categoria}}</td>
+                <td>{{row.recordatorio}}</td>
+                <td>{{row.telefono}}</td>
+                <td>{{row.monto}} {{row.moneda}}</td>
+            </tr>
+        {%endfor%}
+</table>
+<p></p>
+<div class="container center">
+
+    <a href="{% url 'proveedores' %}" class="center waves-effect waves-light btn-small" >
+    Agregar Proveedor</a>
+    <p></p>
+</div>
+
+{%load static%}
+<script src="{%static 'WebPayments/js/materialize.js'%}"></script> 
+
+</body>
+</html>
+{%endblock%}

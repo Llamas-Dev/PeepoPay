@@ -1,0 +1,45 @@
+{% extends 'WebPayments/base.html' %}
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <link rel="shortcut icon" type="image/x-icon" href="{%static 'WebPayments/img/image.png'%}">
+    <link rel="stylesheet" href="{%static 'WebPayments/css/materialize.css'%}">
+    <title>Agregar Proveedor</title>
+<body>
+  <p></p>
+<h2 class="container center">Agregar Proveedor</h2>
+<div class="container">
+  <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="waves-effect waves-light btn-small" type="submit" >Agregar Proveedor</button>
+    <a href="{% url 'listarproveedores' %}" class="waves-effect waves-light btn-small" >Listar Proveedores</a>
+ <p></p>
+ <p></p>
+  </form>
+
+</div>
+  {%if messages%}
+    {% for message in messages %}
+      <div class="notification {{message.tags}}">
+          {{message}}
+      </div>
+    {% endfor %}
+  {%endif%}
+<script language="JavaScript" type="text/javascript" src="{%static 'WebPayments/js/materialize.js'%}"></script> 
+<script language="JavaScript" type="text/javascript" src="{% static 'WebPayments/js/jquery.js' %}" ></script>
+<script>
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      format: 'dd/mm/yyyy'
+    });
+  });
+</script>
+</body>
+</html>
+{% endblock %}
