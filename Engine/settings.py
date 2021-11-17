@@ -78,8 +78,11 @@ WSGI_APPLICATION = 'Engine.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'peepopay',
+        'HOST':'35.223.196.73',
+        'USER':'root',
+        'PASSWORD':'root',
     }
 }
 

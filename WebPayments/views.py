@@ -4,26 +4,7 @@ from django.contrib import messages
 from .models import Proveedor as Prov
 import datetime
 
-
-query = Prov.objects.all()
-date_time = datetime.datetime.now()
-date = date_time.date()
-lista = []
-
-for obj in query:
-    if obj.alerta == date:
-        nombre = str(obj.nombre)
-        lista.append(nombre)
-context = {'lista':lista}
-
-def base(request):
-    return render(request, 'WebPayments/base.html', context)
-
-def index(request):
-
-    return render(request, 'WebPayments/index.html', context)
-
-def alerta(request):
+def alerta():
     query = Prov.objects.all()
     date_time = datetime.datetime.now()
     date = date_time.date()
@@ -33,15 +14,17 @@ def alerta(request):
         if obj.alerta == date:
             nombre = str(obj.nombre)
             lista.append(nombre)
-    context = {'lista':lista}
-    print(context)
+    return {'lista':lista}
 
-    return render(request, 'WebPayments/alerta.html', context)
+def base(request):
+    return render(request, 'WebPayments/base.html', alerta())
 
+def index(request):
+    return render(request, 'WebPayments/index.html', alerta())
 
 def listarproveedores(request):
     table = Prov.objects.all()
-    context = {'table':table,'lista':lista}
+    context = {'table':table,'lista':alerta()}
     return render(request, 'WebPayments/listarproveedores.html', context)
 
 def proveedores(request):
@@ -55,6 +38,5 @@ def proveedores(request):
     else:
         form = Proveedor()
 
-    context = {'form':form,'fecha':fecha, 'lista':lista}
+    context = {'form':form,'fecha':fecha, 'lista':alerta()}
     return render(request, 'WebPayments/proveedores.html', context)
-        
