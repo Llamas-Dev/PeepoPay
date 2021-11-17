@@ -3,8 +3,7 @@
 
 ![image](https://i.imgur.com/EhMWqPU.png)
 
-Acá vamos a subir el avance del proyecto.
-Cada uno debe sacar un branch aparte con su nombre o con lo que quiera. 
+Ya sabemos qu'e hacer :)
 
 ## Instalación
  - Para ejecutar el proyecto es necesario tener python 3.8 en adelante.
