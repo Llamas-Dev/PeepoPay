@@ -1,4 +1,4 @@
-# PeepoPay
+# PeepoPay 2
 
 
 ![image](https://i.imgur.com/EhMWqPU.png)
