@@ -14,7 +14,7 @@ def alerta():
         if obj.alerta == date:
             nombre = str(obj.nombre)
             lista.append(nombre)
-    return {'lista':lista}
+    return lista 
 
 def base(request):
     return render(request, 'WebPayments/base.html', alerta())
