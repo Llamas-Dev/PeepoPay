@@ -8,7 +8,7 @@ def alerta():
     query = Prov.objects.all()
     date_time = datetime.datetime.now()
     date = date_time.date()
-    lista = []
+    lista = []  
 
     for obj in query:
         if obj.alerta == date:
@@ -17,10 +17,12 @@ def alerta():
     return lista 
 
 def base(request):
-    return render(request, 'WebPayments/base.html', alerta())
+    context = {'lista':alerta()}
+    return render(request, 'WebPayments/base.html',context) 
 
 def index(request):
-    return render(request, 'WebPayments/index.html', alerta())
+    context = {'lista':alerta()}
+    return render(request, 'WebPayments/index.html',context)
 
 def listarproveedores(request):
     table = Prov.objects.all()
