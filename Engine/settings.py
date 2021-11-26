@@ -80,9 +80,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'peepopay',
-        'HOST':'35.223.196.73',
+        'HOST':'35.232.237.64',
         'USER':'root',
-        'PASSWORD':'root',
+        'PASSWORD':'jc1dcmEac2vn8ylt',
     }
 }
 
