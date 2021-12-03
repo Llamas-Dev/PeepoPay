@@ -2,7 +2,9 @@ from django.shortcuts import render
 from .forms import Proveedor
 from django.contrib import messages
 from .models import Proveedor as Prov
+from django.db import connection
 import datetime
+
 
 def alerta():
     query = Prov.objects.all()
@@ -15,6 +17,17 @@ def alerta():
             nombre = str(obj.nombre)
             lista.append(nombre)
     return lista 
+def suma():
+    cursor = connection.cursor()
+    cursor.execute("call suma_provedores()")
+    results = cursor.fetchall()
+    return results 
+
+def ordenar():
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM ordenar")
+    results = cursor.fetchall()
+    return results 
 
 def base(request):
     context = {'lista':alerta()}
@@ -26,7 +39,7 @@ def index(request):
 
 def listarproveedores(request):
     table = Prov.objects.all()
-    context = {'table':table,'lista':alerta()}
+    context = {'table':table,'lista':alerta(), 'suma':suma(),'ordenar':ordenar}
     return render(request, 'WebPayments/listarproveedores.html', context)
 
 def proveedores(request):
